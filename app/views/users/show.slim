@@ -1,5 +1,7 @@
 #user-profile.show
-	h1= current_user.name
+	h1
+	| Hi #{current_user.first_name} #{current_user.last_name}
+	br/
 	| Your email is #{current_user.email}
 	.other-links
 		=link_to t(".home"), "/"
