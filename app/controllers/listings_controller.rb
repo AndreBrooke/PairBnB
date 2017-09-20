@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
 	def new
-		@listing= Listing.new
+		allowed?(action: @listing= Listing.new, user:current_user)
 	end
 
 	def show
@@ -8,7 +8,12 @@ class ListingsController < ApplicationController
 	end
 
 	def edit
-		@listing = Listing.find(params[:id])
+		allowed?(action: @listing = Listing.find(params[:id]), user:current_user)
+	end
+
+	def user_listing
+		@user = User.find(params[:id])
+		@listings = User.listings.find(params[:user_id])
 	end
 
 	def create
@@ -34,6 +39,13 @@ class ListingsController < ApplicationController
 			@listings = Listing.all.page(params[:page]).order('created_at DESC')
 		end
 	end
+
+	def verify
+		@listing = Listing.find(params[:id])
+		@listing.update_attributes(:verification => true)
+		flash[:notice] = "Listing verified"
+	end
+
 
 	private
 

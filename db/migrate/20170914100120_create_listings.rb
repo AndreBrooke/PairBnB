@@ -18,6 +18,7 @@ class CreateListings < ActiveRecord::Migration[5.1]
       t.boolean :entire_house
       t.string :listing_name
       t.integer :place_type
+      t.boolean :verification, :default => false
 
       t.timestamps
     end

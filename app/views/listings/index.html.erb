@@ -29,6 +29,10 @@
 						</div>
 						<div class="col-md-3 right">
 							<%= link_to "Update", edit_listing_path(l), class: "btn btn-primary"%>
+							<% if current_user.superadmin? %>
+							<%= button_to "Verify", verify_listing_path(l), method: :put %>
+							
+							<% end %>
 						</div>
 					</div>
 					<hr/>

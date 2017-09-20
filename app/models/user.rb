@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :authentications, dependent: :destroy
   has_many :listings
+  enum role: { :customer => 0, :moderator => 1, :superadmin => 2 }
+  enum gender: {:male => 0, :female => 1}
   
 
     def self.create_with_auth_and_hash(authentication, auth_hash)

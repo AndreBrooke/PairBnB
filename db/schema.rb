@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20170918090228) do
     t.boolean "entire_house"
     t.string "listing_name"
     t.integer "place_type"
+    t.boolean "verification", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_listings_on_user_id"
@@ -103,10 +104,11 @@ ActiveRecord::Schema.define(version: 20170918090228) do
     t.string "remember_token", limit: 128, null: false
     t.string "first_name", limit: 50, null: false
     t.string "last_name", limit: 50, null: false
-    t.integer "gender", null: false
+    t.integer "gender"
     t.string "phone"
     t.string "country"
     t.datetime "birthdate"
+    t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email"
     t.index ["first_name"], name: "index_users_on_first_name"
     t.index ["last_name"], name: "index_users_on_last_name"

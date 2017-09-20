@@ -9,13 +9,16 @@ Rails.application.routes.draw do
   resources :listings, only: [:show, :index]
   end
     resources :listings do
+      member do
+        put 'verify'
+      end
       resources :bookings
     end
 
 #nested routes suck
  
 
-  get "/users/:user_id/listings/:id" => "users#show_listing", as: "show_user_listing"
+  get "/users/:user_id/listings/:id" => "listing#user_listing", as: "show_user_listing"
   get "/listings" => "listings#all", as: "all_listing"
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
