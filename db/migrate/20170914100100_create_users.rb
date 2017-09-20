@@ -8,10 +8,11 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :remember_token, limit: 128, null: false
       t.string :first_name, null: false, limit: 50
       t.string :last_name, null: false, limit: 50
-      t.integer :gender, null: false
+      t.integer :gender
       t.string :phone
       t.string :country
       t.datetime :birthdate
+      t.integer :role, :default => 0
 
     end
 
