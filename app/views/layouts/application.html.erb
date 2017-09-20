@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <%= javascript_include_tag 'application' %>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Airbnb</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true%>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tag %>
+
 </head>
 <body>
-  
-
-  <%= yield %>
+  <%= render 'shared/navbar' %>
+  <div class="container main-container">
+  		<%= yield %>
+  </div>
 </body>
 </html>

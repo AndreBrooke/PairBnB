@@ -1,0 +1,39 @@
+ <div class= "panel panel-default">
+ 	<div class= "panel-body">
+ 		<% if @listings.blank? %>
+      		<h4>There are no listings containing the term <%= params[:search] %>.</h4>
+ 		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<ul class="sidebar-list">
+			<li class="sidebar-item"><%= link_to "Your Listing", listing_path(current_user), class:"sidebar-link active"%></li>
+			<li class="sidebar-item"><%= link_to "Your Reservations", listing_path(current_user), class:"sidebar-link"%></li>
+		</ul>
+	</div>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Listings
+			</div>
+			<div class="panel-body">
+				<%= will_paginate @listings %>
+				<% @listings.each do |l| %>
+				
+
+					<div class="row">
+						<div class="col-md-7">
+							<h4><%= l.listing_name %></h4>
+						</div>
+						<div class="col-md-3 right">
+							<%= link_to "Update", edit_listing_path(l), class: "btn btn-primary"%>
+						</div>
+					</div>
+					<hr/>
+				<% end %>
+			</div>
+		</div>
+	</div>	
+</div>
