@@ -1,0 +1,29 @@
+h1 
+ All listings
+
+	table =@listing.each do |list|
+     tr
+    th Description
+    th Status
+    th City
+    th Country
+    th Address
+    th Rent
+    th Number of Rooms
+    th Minimum Stay
+    th Private room?
+    th Shared room?
+    th Entire house?
+     tr
+    th= @list.description
+    th= @list.status
+    th= @list.city
+    th= @list.country
+    th= @list.address
+    th= @list.rent
+    th= @list.number_of_rooms
+    th= @list.minimum_stay
+    th= @list.private_room
+    th= @list.shared_room
+    th= @list.entire_house
+

@@ -6,3 +6,5 @@
 	.other-links
 		=link_to t(".home"), "/"
 	= button_to 'Sign out', sign_out_path, method: :delete
+
+	= link_to "My listing", show_user_listing_path(current_user, @listing.id)

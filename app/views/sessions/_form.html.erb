@@ -1,5 +1,6 @@
+
 <%= form_for :session, url: session_path do |form| %>
-  <div class="text-field">
+  <div class="form-group">
     <%= form.label :email %>
     <%= form.text_field :email, type: 'email' %>
   </div>
@@ -20,3 +21,4 @@
     <%= link_to t(".forgot_password"), new_password_path %>
   </div>
 <% end %>
+<%= render 'shared/facebook_login' %>

@@ -1,0 +1,45 @@
+.text-field
+  = form.label :listing_name
+  = form.text_field :listing_name
+.text-field
+  = form.label :status
+  = form.text_field :status
+.text-field
+  = form.label :country
+  = form.text_field :country
+.text-field
+  = form.label :state
+  = form.text_field :state
+.text-field
+  = form.label :zipcode
+  = form.text_field :zipcode
+.text-field
+  = form.label :city
+  = form.text_field :city
+.text-field
+  = form.label :address
+  = form.text_field :address
+.text-field
+	= form.label :rent
+	= form.text_field :rent
+.number-field
+	= form.label :min_stay
+	= form.number_field :min_stay, min: 1
+.number-field
+  = form.label :number_of_rooms
+  = form.number_field :number_of_rooms, min: 1
+.text-field
+  = form.label :description
+  = form.text_field :description
+.form-group
+  label for="place_type"  Place Type:
+  select#place_type.form-control
+    option Private Room
+    option Shared Room
+    option Entire House
+.text-field
+	=form.label :tag_list
+	=form.text_field :tag_list, parse: true
+
+
+

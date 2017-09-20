@@ -1,0 +1,81 @@
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		
+		<!-- Main Info -->
+		<div class="row">
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-3 text-center">
+						
+						<%= @listing.user.first_name %> <%= @listing.user.last_name %>
+					</div>
+					<div class="col-md-9">
+						<h4><%= @listing.listing_name %></h4>
+						<%= @listing.address %>
+
+						<div class="row text-centre row-space-1">
+							<div class="col-sm-3">
+								<i class="fa fa-home fa-2x"></i>
+							</div>
+							<div class="col-sm-3">
+								<i class="fa fa-user fa-2x"></i>
+							</div>
+							<div class="col-sm-3">
+								<i class="fa fa-bed fa-2x"></i>
+							</div>
+							<div class="col-sm-3">
+								<i class="fa fa-ship fa-2x"></i>
+							</div>
+						</div>
+						<div class="row text-centre row-space-1">
+							<div class="col-sm-3">
+								<%= @listing.number_of_rooms %> <%= @listing.number_of_rooms > 1 ? "Guests":"Guest"  %>
+							</div>
+							<div class="col-sm-3">
+								<%= @listing.min_stay %> <%= @listing.min_stay > 1 ? "Days":"Days"  %>
+							</div>
+							
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<!-- Reservation form <-->
+				<%= render 'bookings/form' %>
+				
+
+			</div>
+
+		</div>
+
+		<!-- About -->
+		<div class="row">
+			<div class="col-md-12">
+				<h2>About This Listing</h2>
+				<p><%= @listing.description%></p>
+			</div>
+		</div>
+
+		<!-- Amenities -->
+		<div class="row">
+			<div class="col-md-2">
+				<h2>Room Type</h2>
+			</div>
+			<div class="row">
+				<div class="col-md-10">
+					<div class="row">
+						<div class="col-md-6">
+							<ul class="room-type">
+								<li class="<%= 'text-line-through' unless @listing.private_room%>">Private Room</li>
+								<li class="<%= 'text-line-through' unless @listing.shared_room%>">Shared Room</li>
+								<li class="<%= 'text-line-through' unless @listing_entire_house%>">Entire House</li>	
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

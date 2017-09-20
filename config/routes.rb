@@ -6,10 +6,17 @@ Rails.application.routes.draw do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
+  resources :listings, only: [:show, :index]
   end
+    resources :listings do
+      resources :bookings
+    end
 
+#nested routes suck
+ 
 
-  #update "users/:id" => "users#update", as: "update"
+  get "/users/:user_id/listings/:id" => "users#show_listing", as: "show_user_listing"
+  get "/listings" => "listings#all", as: "all_listing"
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"

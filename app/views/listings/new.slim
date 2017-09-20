@@ -1,0 +1,10 @@
+#listing.create-listing
+  h2 Create Listing
+
+  = form_for @listing do |form|
+    = render partial: '/listings/form', object: form
+    .submit-field
+
+      = form.submit
+    .other-links
+      = link_to t(".sign_in"), sign_in_path

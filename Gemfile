@@ -25,9 +25,19 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 # Slim gem
 gem 'slim'
+# jquery-rails
+gem 'jquery-rails'
+# Datepicker for rails
+gem 'bootstrap-datepicker-rails'
+# Faker for seeding
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 # Omniauth-facebook
 gem 'omniauth'
 gem 'omniauth-facebook'
+# will paginate for pagination
+gem 'will_paginate', '~> 3.1.0'
+# acts-as-taggable-on for tagging
+gem 'acts-as-taggable-on', '~> 4.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
