@@ -19,23 +19,25 @@
 				Listings
 			</div>
 			<div class="panel-body">
-				<%= will_paginate @listings %>
-				<% @listings.each do |l| %>
-				
-
-					<div class="row">
-						<div class="col-md-7">
-							<h4><%= l.listing_name %></h4>
+				<% if @listings.empty? == false %>
+					<%= will_paginate @listings %>
+					<% @listings.each do |l| %>
+						<div class="row">
+							<div class="col-md-7">
+								<h4><%= l.listing_name %></h4>
+							</div>
+							<div class="col-md-3 right">
+								<%= link_to "Update", edit_listing_path(l), class: "btn btn-primary"%>
+								<% if current_user.superadmin? %>
+								<%= button_to "Verify", verify_listing_path(l), method: :put %>
+								
+								<% end %>
+							</div>
 						</div>
-						<div class="col-md-3 right">
-							<%= link_to "Update", edit_listing_path(l), class: "btn btn-primary"%>
-							<% if current_user.superadmin? %>
-							<%= button_to "Verify", verify_listing_path(l), method: :put %>
-							
-							<% end %>
-						</div>
-					</div>
-					<hr/>
+						<hr/>
+					<% end %>
+				<% else %>
+					<p> No listings have been posted.</p>
 				<% end %>
 			</div>
 		</div>

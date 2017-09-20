@@ -7,4 +7,4 @@
 		=link_to t(".home"), "/"
 	= button_to 'Sign out', sign_out_path, method: :delete
 
-	/ = link_to "My listings", show_user_listing_path(current_user.id, @listings.id)
+    = link_to "My listings", show_user_listing_path(current_user)
