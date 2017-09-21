@@ -31,7 +31,6 @@ class ListingsController < ApplicationController
 	end
 
 	def index
-
 		@listings = Listing.all
 		if params[:search]
 			@listings = Listing.search(params[:search]).page(params[:page]).order("created_at DESC")

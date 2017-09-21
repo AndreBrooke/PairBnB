@@ -9,4 +9,26 @@ class Listing < ApplicationRecord
 	def self.search(search)
 		where("listing_name ILIKE ? OR country ILIKE ? OR city ILIKE?", "%#{search}%", "%#{search}%", "%#{search}%")
 	end
+
+	def verified?
+		verified_at != nil
+	end
+
+	def verify
+		self.verified_at = Time.now
+	end
+
+	def verify!
+		verify
+		save!
+	end
+
+	def unverify
+		self.verified_at = nil
+	end
+
+	def unverify!
+		unverify
+		save!
+	end
 end

@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20170918090228) do
     t.boolean "entire_house"
     t.string "listing_name"
     t.integer "place_type"
-    t.boolean "verification", default: false
+    t.datetime "verified_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_listings_on_user_id"
