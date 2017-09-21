@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_accessor :avatar
   include Clearance::User
   has_many :bookings
   has_many :reviews
@@ -6,6 +7,8 @@ class User < ApplicationRecord
   has_many :listings
   enum role: { :customer => 0, :moderator => 1, :superadmin => 2 }
   enum gender: {:male => 0, :female => 1}
+  mount_uploader :avatar, AvatarUploader
+
   
 
     def self.create_with_auth_and_hash(authentication, auth_hash)

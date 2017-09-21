@@ -25,6 +25,10 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 # Slim gem
 gem 'slim'
+# Minimagick
+gem "mini_magick"
+# Carrierwave
+gem 'carrierwave', '~> 1.0'
 # recordtaghelper for old rails helpers
 gem 'record_tag_helper', '~> 1.0'
 # jquery-rails
