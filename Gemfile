@@ -25,6 +25,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 # Slim gem
 gem 'slim'
+# recordtaghelper for old rails helpers
+gem 'record_tag_helper', '~> 1.0'
 # jquery-rails
 gem 'jquery-rails'
 # Datepicker for rails

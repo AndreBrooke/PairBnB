@@ -21,15 +21,21 @@
 			<div class="panel-body">
 				<% if @listings.empty? == false %>
 					<%= will_paginate @listings %>
-					<% @listings.each do |l| %>
+					<% @listings.each do |list| %>
 						<div class="row">
 							<div class="col-md-7">
-								<h4><%= l.listing_name %></h4>
+								<h4><%= list.listing_name %></h4>
 							</div>
 							<div class="col-md-3 right">
-								<%= link_to "Update", edit_listing_path(l), class: "btn btn-primary"%>
+								<%= link_to "Update", edit_listing_path(list), class: "btn btn-primary"%>
 								<% if current_user.superadmin? %>
-								<%= button_to "Verify", verify_listing_path(l), method: :put %>
+								
+								<div>
+									<%= link_to_toggle_listing_verify list %>
+								</div>
+
+								
+								
 								
 								<% end %>
 							</div>

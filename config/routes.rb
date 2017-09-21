@@ -9,9 +9,10 @@ Rails.application.routes.draw do
     resources :listings, only: [:show]
   end
     resources :listings do
-      member do
-        put 'verify'
-      end
+      resource :verify, only: %w(update destroy)
+      # member do
+      #   put 'verify'
+      # end
       resources :bookings
     end
 
