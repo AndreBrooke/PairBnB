@@ -23,20 +23,22 @@
 					<%= will_paginate @listings %>
 					<% @listings.each do |list| %>
 						<div class="row">
+							<div class="col-md-2">
+								<% if list.images[0] != nil %>
+								<%= link_to (image_tag list.images[0].url(:thumb), class: 'image-thumb'), listing_path(list) %>
+								<% end %>
+							</div>
 							<div class="col-md-7">
-								<h4><%= list.listing_name %></h4>
+								
 							</div>
 							<div class="col-md-3 right">
+								<h4><%= list.listing_name %></h4>
 								<%= link_to "Update", edit_listing_path(list), class: "btn btn-primary"%>
 								<% if current_user.superadmin? %>
 								
 								<div>
 									<%= link_to_toggle_listing_verify list %>
 								</div>
-
-								
-								
-								
 								<% end %>
 							</div>
 						</div>

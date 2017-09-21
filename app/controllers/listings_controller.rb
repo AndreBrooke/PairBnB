@@ -26,6 +26,20 @@ class ListingsController < ApplicationController
 		end
 	end
 
+	def update
+		@listing = current_user.listings.update(listing_params)
+		if @listing != nil 
+			if @listing.save
+				redirect_to @listing
+			else
+				redirect_to template: "listings/edit"
+			end
+		else
+			redirect_to '/'
+			flash[:notice] = "You haven't made a listing yet"
+		end
+	end
+
 	def all
 		@listing = Listing.new
 	end
@@ -37,6 +51,7 @@ class ListingsController < ApplicationController
 		else
 			@listings = Listing.all.page(params[:page]).order('created_at DESC')
 		end
+
 	end
 
 	def verify
@@ -49,7 +64,7 @@ class ListingsController < ApplicationController
 	private
 
 	def listing_params
-		params.require(:listing).permit(:description, :status, :city, :country, :address, :number_of_rooms, :rent, :min_stay, :private_room, :shared_room, :entire_house, :listing_name, :place_type, :state, :zipcode,  :tag_list)
+		params.require(:listing).permit(:description, :status, :city, :country, :address, :number_of_rooms, :rent, :min_stay, :private_room, :shared_room, :entire_house, :listing_name, :place_type, :state, :zipcode,  :tag_list, {images:[]})
 	end
 end
 

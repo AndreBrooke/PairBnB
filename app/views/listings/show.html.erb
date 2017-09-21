@@ -1,12 +1,18 @@
 
 <div class="panel panel-default">
 	<div class="panel-body">
-		
+		<div class="row">
+			<div class= "col-md-8 col-md-offset-2">
+				<%= image_tag @listing.images[0].url, class: "img-responsive" if @listing.images[0] != nil %>
+			</div>
+		</div>
 		<!-- Main Info -->
 		<div class="row">
 			<div class="col-md-8">
 				<div class="row">
 					<div class="col-md-3 text-center">
+						<%= image_tag @listing.user.avatar.url, class: "img-circle avatar-large" %>
+						<br/><br/>
 						
 						<%= @listing.user.first_name %> <%= @listing.user.last_name %>
 					</div>
@@ -30,10 +36,16 @@
 						</div>
 						<div class="row text-centre row-space-1">
 							<div class="col-sm-3">
-								<%= @listing.number_of_rooms %> <%= @listing.number_of_rooms > 1 ? "Guests":"Guest"  %>
+								<%= @listing.number_of_rooms %> 
+								<% if @listing.number_of_rooms != nil%>
+								<%= @listing.number_of_rooms > 1 ? "Guests":"Guest"  %>
+								<% end %>
 							</div>
 							<div class="col-sm-3">
-								<%= @listing.min_stay %> <%= @listing.min_stay > 1 ? "Days":"Days"  %>
+								<%= @listing.min_stay %>
+								<% if @listing.min_stay != nil %>
+								 <%= @listing.min_stay > 1 ? "Days":"Days"  %>
+								 <% end %>
 							</div>
 							
 						</div>
@@ -70,12 +82,21 @@
 							<ul class="room-type">
 								<li class="<%= 'text-line-through' unless @listing.private_room%>">Private Room</li>
 								<li class="<%= 'text-line-through' unless @listing.shared_room%>">Shared Room</li>
-								<li class="<%= 'text-line-through' unless @listing_entire_house%>">Entire House</li>	
+								<li class="<%= 'text-line-through' unless @listing.entire_house%>">Entire House</li>	
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+					<% if @listing.images %>
+						<ol class="carousel-indicators">
+							<% @listing.images.each do |image| %>
+							<li data-target="#myCarousel" data-slide-to="<%= image.count %>"</li>
+				</div>
 	</div>
 </div>
