@@ -1,6 +1,15 @@
 class BookingsController < ApplicationController
 	before_action :require_login
 
+	def preload
+
+		listing = Listing.find(params[:room_id])
+		today = Date.today
+		booking = listing.bookings.where("check_in >= ? OR check_out >= ?", today, today)
+
+		render json: bookings
+	end
+
 	def new
 		@booking = Booking.new
 	end
@@ -32,16 +41,6 @@ class BookingsController < ApplicationController
 			redirect to @booking.listing, notice: "Your booking has been made..."
 		
 	end
-
-	def preload
-		listing = Listing.find(params[:listing_id])
-		today = Date.today
-		bookings = listing.bookings.where("check_in >= ? OR check_out >= ?", today, today)
-
-		render json: bookings 
-	end
-
-
 
 	private
 	def booking_params

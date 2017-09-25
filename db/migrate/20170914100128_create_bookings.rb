@@ -5,8 +5,10 @@ class CreateBookings < ActiveRecord::Migration[5.1]
     t.belongs_to :listing, foreign_key: true
     t.datetime :check_in
     t.datetime :check_out
+    t.integer :rent
+    t.integer :total
 
-    t.timestamps
+    t.timestamps null: false
     end
   end
 end
