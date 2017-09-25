@@ -33,6 +33,10 @@ gem 'carrierwave', '~> 1.0'
 gem 'record_tag_helper', '~> 1.0'
 # jquery-rails
 gem 'jquery-rails'
+# fog for AWS
+gem "fog-aws"
+# rest client
+gem 'rest-client'
 # Datepicker for rails
 gem 'bootstrap-datepicker-rails'
 # Faker for seeding

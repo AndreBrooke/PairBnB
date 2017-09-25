@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20170921071213) do
     t.bigint "listing_id"
     t.datetime "check_in"
     t.datetime "check_out"
+    t.integer "rent"
+    t.integer "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["listing_id"], name: "index_bookings_on_listing_id"
