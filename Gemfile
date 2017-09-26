@@ -37,8 +37,14 @@ gem 'jquery-rails'
 gem "fog-aws"
 # rest client
 gem 'rest-client'
+# braintree
+gem 'braintree'
+# Font-awesome rails
+gem 'font-awesome-rails'
+# momentjs-rails
+gem 'momentjs-rails'
 # Datepicker for rails
-gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-daterangepicker-rails'
 # Faker for seeding
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 # Omniauth-facebook

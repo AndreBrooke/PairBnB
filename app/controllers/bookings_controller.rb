@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
 	before_action :require_login
 
+	def 
+
 	def preload
 
 		listing = Listing.find(params[:room_id])
@@ -44,6 +46,6 @@ class BookingsController < ApplicationController
 
 	private
 	def booking_params
-		params.require(:booking).permit(:check_in, :check_out, :rent, :total, :listing_id)
+		params.require(:booking).permit(:check_in, :check_out, :rent, :max_guests)
 	end
 end

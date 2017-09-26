@@ -1,6 +1,8 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "daterangepicker-bs3";
+@import "font-awesome";
 
 
 body{
@@ -17,6 +19,15 @@ body{
 
 .container{
   width: 80%;
+}
+
+.form-signin{
+  max-width: 330px;
+}
+
+#search-form{
+  padding-top: 15px;
+
 }
 
 .navbar-default{
@@ -89,7 +100,7 @@ body{
 }
 
 .google-btn, .facebook-btn{
-  width: 230px;
+  width: 330px;
   img{
     position: relative;
     top: -2px;
@@ -229,6 +240,8 @@ input[type=checkbox]:checked:before{
   color: #FF5a5F;
 }
 
+.clickable { cursor:pointer; }
+
 .btn-file{
   position: relative;
   overflow: hidden;
@@ -249,6 +262,7 @@ input[type=checkbox]:checked:before{
     display: block;
   }
 }
+
 
 .panel-heading.preview{
   padding: 0px;

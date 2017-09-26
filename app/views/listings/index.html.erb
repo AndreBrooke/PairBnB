@@ -7,12 +7,14 @@
 </div>
 
 <div class="row">
+	<% if signed_in?%>
 	<div class="col-md-3">
 		<ul class="sidebar-list">
 			<li class="sidebar-item"><%= link_to "Your Listing", listing_path(current_user), class:"sidebar-link active"%></li>
 			<li class="sidebar-item"><%= link_to "Your Reservations", listing_path(current_user), class:"sidebar-link"%></li>
 		</ul>
 	</div>
+	<% end %>
 	<div class="col-md-9">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -32,13 +34,15 @@
 								
 							</div>
 							<div class="col-md-3 right">
-								<h4><%= list.listing_name %></h4>
+								<h4><%= link_to ( list.listing_name), listing_path(list) %></h4>
 								<%= link_to "Update", edit_listing_path(list), class: "btn btn-primary"%>
+								<% if signed_in? %>
 								<% if current_user.superadmin? %>
 								
 								<div>
 									<%= link_to_toggle_listing_verify list %>
 								</div>
+								<% end %>
 								<% end %>
 							</div>
 						</div>
