@@ -6,67 +6,34 @@
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4">
         <h1 class="display-3">Airbnb</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+        <p class="lead">Search for accomodation for your next trip!</p>
+        <%= form_tag(listings_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search..", :required => 'required' %>
+            <%= submit_tag "Search", :name => nil %>
+        <% end %>
         <a href="#" class="btn btn-primary btn-lg">Find your dream destination</a>
       </header>
 
       <!-- Page Features -->
       <div class="row text-center">
-      <% for i in 0..3 %>
-      
+      <% for i in 1..4 %>
+        <% if Listing.all[i] != nil %>
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
           	
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+            <img class="card-img-top" src="http://via.placeholder.com/250x150" alt="">
             <div class="card-body">
-              <h4 class="card-title"><%= Listing.all[i].listing_name%></h4>
+              <h4 class="card-title"><%= Listing.find(i).listing_name%></h4>
               <p class="card-text"></p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
+              <%= link_to 'Find Out More!', listing_path(i), class:"btn btn-primary" %>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text"></p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text"></p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text"></p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
 		<% end%>
+    <%end %>
       </div>
       <!-- /.row -->
 

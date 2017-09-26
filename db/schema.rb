@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20170921071213) do
     t.index ["user_id"], name: "index_authentications_on_user_id"
   end
 
+  create_table "avatars", force: :cascade do |t|
+    t.string "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "listing_id"

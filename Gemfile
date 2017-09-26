@@ -44,7 +44,7 @@ gem 'font-awesome-rails'
 # momentjs-rails
 gem 'momentjs-rails'
 # Datepicker for rails
-gem 'bootstrap-daterangepicker-rails'
+gem 'bootstrap-datepicker-rails'
 # Faker for seeding
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 # Omniauth-facebook

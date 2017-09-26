@@ -1,0 +1,39 @@
+<div class="row">
+	<% if signed_in?%>
+	<div class="col-md-3">
+		<ul class="sidebar-list">
+			<li class="sidebar-item"><%= link_to "Your Listing", listing_path(current_user), class:"sidebar-link"%></li>
+			<li class="sidebar-item"><%= link_to "Your Reservations", listing_path(current_user), class:"sidebar-link active"%></li>
+		</ul>
+	</div>
+	<% end %>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Reservations
+			</div>
+			<div class="panel-body">
+				<% if @bookings.empty? == false %>
+					<% @bookings.each do |list| %>
+						<div class="row">
+							<div class="col-md-2">
+								<%= @bookings.all%>
+							
+							</div>
+							<div class="col-md-7">
+								
+							</div>
+							<div class="col-md-3 right">
+								
+								
+							</div>
+						</div>
+						<hr/>
+					<% end %>
+				<% else %>
+					<p> No Reservations have been made</p>
+				<% end %>
+			</div>
+		</div>
+	</div>	
+</div>
