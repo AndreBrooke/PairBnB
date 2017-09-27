@@ -6,19 +6,6 @@ class BookingsController < ApplicationController
 		@booking = Booking.new
 	end
 
-# 	Listing.all
-# @booking = Booking.all
-
-# @boooking.find(i).listing_id
-
-# @listing = Listing.all
-
-# @listing.find(current_user.listing_ids[0])
-
-# current_user.booking_ids[i]
-
-# @listing.find(@booking.find(@user.booking_ids[0]).listing_id)
-
 	def index
 		@bookings = Booking.all
 		@listings = Listing.all 
@@ -47,14 +34,19 @@ class BookingsController < ApplicationController
 	end
 
 	def create
-		@booking = current_user.bookings.create(booking_params)
-
-			redirect_to @booking.listing, notice: "Your booking has been made..."
 		
+		@booking = Booking.new(booking_params)
+		if @booking.cannot_overlap
+			redirect_to braintree_new_path(listing_id: @booking.listing_id, :check_in => @booking.check_in, :check_out => @booking.check_out), notice: "Please make payment"
+		else
+			redirect_to :root,  notice: "Invalid date selection"
+		end
 	end
 
 	private
 	def booking_params
+		params[:booking][:check_in] = DateTime.strptime(params[:booking][:check_in], '%m/%d/%Y')
+		params[:booking][:check_out] = DateTime.strptime(params[:booking][:check_out], '%m/%d/%Y')
 		params.require(:booking).permit(:check_in, :check_out, :rent, :max_guests, :listing_id)
 	end
 end

@@ -10,6 +10,8 @@ end
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
+# Validates overlap
+gem 'validates_overlap'
 # Figaro for secure configuration 
 gem 'figaro'
 # Use Puma as the app server
