@@ -1,24 +1,28 @@
 
-<%= form_for :session, url: session_path do |form| %>
-  <div class="form-group">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
-  </div>
+<div class= "form-signin">
+  <%= form_for :session, url: session_path do |form| %>
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <div class="form-group">
+     
+      <%= form.text_field :email, type: 'email', class:"form-control", placeholder:"Email Address", required: true  %>
+    
+    <div class="password-field">
+      <%= form.password_field :password, type: 'password', class:'form-control', placeholder:'Password', required: true %> 
+    </div>
+    <div class="submit-field">
+      <%= form.submit "Sign in", class:"btn btn-lg btn-primary btn-block"%>
+    </div>
+    <%= render 'shared/facebook_login' %>
+    <div class="other-links">
+      <% if Clearance.configuration.allow_sign_up? %>
+        <%= link_to t(".sign_up"), sign_up_path %>
+      <% end %>
+      <%= link_to t(".forgot_password"), new_password_path %>
+    </div>
+  <% end %>
+  
 
-  <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
 
-  <div class="submit-field">
-    <%= form.submit %>
-  </div>
 
-  <div class="other-links">
-    <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
-    <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
-  </div>
-<% end %>
-<%= render 'shared/facebook_login' %>
+
+

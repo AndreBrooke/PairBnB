@@ -23,4 +23,5 @@ module ListingsHelper
 		title_with_icon = icon << ' '.html_safe << h(title)
 		link_to(title_with_icon, url, options)
 	end
+
 end

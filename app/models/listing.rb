@@ -34,4 +34,5 @@ class Listing < ApplicationRecord
 		unverify
 		save!
 	end
+
 end

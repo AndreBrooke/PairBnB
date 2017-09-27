@@ -1,49 +1,52 @@
 class BookingsController < ApplicationController
 	before_action :require_login
-
-	def preload
-
-		listing = Listing.find(params[:room_id])
-		today = Date.today
-		booking = listing.bookings.where("check_in >= ? OR check_out >= ?", today, today)
-
-		render json: bookings
-	end
+	
 
 	def new
 		@booking = Booking.new
+	end
+
+	def index
+		@bookings = Booking.all
+		@listings = Listing.all 
+		@listing_book = current_user.booked_listing
 	end
 
 	def edit
 		@booking = Booking.find(params[:id])
 	end
 
-	def show
-		@booking = Booking.find(params[:id])
+	def user_show
+		@booking = current_user
 	end
 
-	def index
-		current_user.Bookings 
+	def show
+		@booking = Booking.find(params)
 	end
 
 	def update
 		@booking = Booking.find(params[:id])
 		if @booking.update(booking_params)
-			redirect to @booking
+			redirect_to @booking
 		else
 			render template: "booking/new"
 		end
 	end
 
 	def create
-		@booking = current_user.bookings.create(booking_params)
-
-			redirect to @booking.listing, notice: "Your booking has been made..."
 		
+		@booking = Booking.new(booking_params)
+		if @booking.cannot_overlap
+			redirect_to braintree_new_path(listing_id: @booking.listing_id, :check_in => @booking.check_in, :check_out => @booking.check_out), notice: "Please make payment"
+		else
+			redirect_to :root,  notice: "Invalid date selection"
+		end
 	end
 
 	private
 	def booking_params
-		params.require(:booking).permit(:check_in, :check_out, :rent, :total, :listing_id)
+		params[:booking][:check_in] = DateTime.strptime(params[:booking][:check_in], '%m/%d/%Y')
+		params[:booking][:check_out] = DateTime.strptime(params[:booking][:check_out], '%m/%d/%Y')
+		params.require(:booking).permit(:check_in, :check_out, :rent, :max_guests, :listing_id)
 	end
 end

@@ -10,6 +10,8 @@ end
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
+# Validates overlap
+gem 'validates_overlap'
 # Figaro for secure configuration 
 gem 'figaro'
 # Use Puma as the app server
@@ -37,6 +39,12 @@ gem 'jquery-rails'
 gem "fog-aws"
 # rest client
 gem 'rest-client'
+# braintree
+gem 'braintree'
+# Font-awesome rails
+gem 'font-awesome-rails'
+# momentjs-rails
+gem 'momentjs-rails'
 # Datepicker for rails
 gem 'bootstrap-datepicker-rails'
 # Faker for seeding

@@ -1,6 +1,8 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-datepicker3";
+@import "font-awesome";
 
 
 body{
@@ -11,12 +13,41 @@ body{
   }
 }
 
+// input[type=text] {
+//     width: 260px;
+//     box-sizing: border-box;
+//     border: 2px solid #ccc;
+//     border-radius: 4px;
+//     font-size: 16px;
+//     background-color: white;
+//     background-image: url('searchicon.png');
+//     background-position: 10px 10px; 
+//     background-repeat: no-repeat;
+//     padding: 12px 20px 12px 40px;
+//     -webkit-transition: width 0.4s ease-in-out;
+//     transition: width 0.4s ease-in-out;
+// }
+
+input[type=text]:focus {
+    width: 100%;
+}
+
 .panel{
   border-radius: 0px;
 }
 
 .container{
   width: 80%;
+}
+
+.form-signin{
+  max-width: 330px;
+}
+
+#search-form{
+  
+  padding-top: 15px;
+
 }
 
 .navbar-default{
@@ -89,7 +120,7 @@ body{
 }
 
 .google-btn, .facebook-btn{
-  width: 230px;
+  width: 330px;
   img{
     position: relative;
     top: -2px;
@@ -229,6 +260,8 @@ input[type=checkbox]:checked:before{
   color: #FF5a5F;
 }
 
+.clickable { cursor:pointer; }
+
 .btn-file{
   position: relative;
   overflow: hidden;
@@ -249,6 +282,7 @@ input[type=checkbox]:checked:before{
     display: block;
   }
 }
+
 
 .panel-heading.preview{
   padding: 0px;
