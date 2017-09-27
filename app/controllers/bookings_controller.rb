@@ -6,8 +6,23 @@ class BookingsController < ApplicationController
 		@booking = Booking.new
 	end
 
+# 	Listing.all
+# @booking = Booking.all
+
+# @boooking.find(i).listing_id
+
+# @listing = Listing.all
+
+# @listing.find(current_user.listing_ids[0])
+
+# current_user.booking_ids[i]
+
+# @listing.find(@booking.find(@user.booking_ids[0]).listing_id)
+
 	def index
-		@bookings = current_user.bookings.all
+		@bookings = Booking.all
+		@listings = Listing.all 
+		@listing_book = current_user.booked_listing
 	end
 
 	def edit

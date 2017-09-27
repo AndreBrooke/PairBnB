@@ -10,28 +10,38 @@
 	<div class="col-md-9">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Reservations
+				Bookings
 			</div>
 			<div class="panel-body">
-				<% if @bookings.empty? == false %>
-					<% @bookings.each do |list| %>
+				<% if @listing_book.empty? == false %>
+					
+					<% @listing_book.each do |list| %>
 						<div class="row">
 							<div class="col-md-2">
-								<%= @bookings.all%>
-							
+								<% if list.images[0] != nil %>
+								<%= link_to (image_tag list.images[0].url(:thumb), class: 'image-thumb'), listing_path(list) %>
+								<% end %>
 							</div>
 							<div class="col-md-7">
 								
 							</div>
 							<div class="col-md-3 right">
+								<h4><%= link_to ( list.listing_name), listing_path(list) %></h4>
+								<%= link_to "Update", edit_listing_path(list), class: "btn btn-primary"%>
+								<% if signed_in? %>
+								<% if current_user.superadmin? %>
 								
-								
+								<div>
+									<%= link_to_toggle_listing_verify list %>
+								</div>
+								<% end %>
+								<% end %>
 							</div>
 						</div>
 						<hr/>
 					<% end %>
 				<% else %>
-					<p> No Reservations have been made</p>
+					<p> No listings have been posted.</p>
 				<% end %>
 			</div>
 		</div>
