@@ -37,6 +37,7 @@ class BookingsController < ApplicationController
 		
 		@booking = Booking.new(booking_params)
 		if @booking.cannot_overlap
+			
 			redirect_to braintree_new_path(listing_id: @booking.listing_id, :check_in => @booking.check_in, :check_out => @booking.check_out), notice: "Please make payment"
 		else
 			redirect_to :root,  notice: "Invalid date selection"
