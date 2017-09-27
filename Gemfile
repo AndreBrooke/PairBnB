@@ -10,8 +10,8 @@ end
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
-# Validates overlap
-gem 'validates_overlap'
+# letter-opener
+gem "letter_opener", :group => :development
 # Figaro for secure configuration 
 gem 'figaro'
 # Use Puma as the app server
@@ -62,6 +62,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+# Sidekiq
+gem 'sidekiq'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
