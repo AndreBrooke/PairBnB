@@ -23,7 +23,7 @@ class BraintreeController < ApplicationController
 
   	if result.success?
   		booking.save
-      BookingMailer.booking_email(booking).deliver_later
+      BookingJob.perform_now(booking)
   		redirect_to :root , :flash => {:success => "Transaction successful!"}
   	else
   		redirect_to braintree_new_path, :flash => {:error => "Transaction failed.Please try again."}
