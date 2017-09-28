@@ -14,6 +14,10 @@ gem 'pg', '~> 0.18'
 gem "letter_opener", :group => :development
 # Figaro for secure configuration 
 gem 'figaro'
+# Foreman to manage starting and stopping Rails server
+gem "foreman"
+# Rails 12 factor
+gem "rails_12factor", :group => :production
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use Bootstrap & SCSS for stylesheets
