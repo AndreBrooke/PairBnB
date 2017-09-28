@@ -12,6 +12,8 @@ gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
 # letter-opener
 gem "letter_opener", :group => :development
+# Skylight
+gem "skylight"
 # Figaro for secure configuration 
 gem 'figaro'
 # Foreman to manage starting and stopping Rails server
