@@ -2,13 +2,19 @@
 
     <!-- Page Content -->
     <div class="container">
-
+    
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4">
         <h1 class="display-3">Airbnb</h1>
         <p class="lead">Search for accomodation for your next trip!</p>
         <%= form_tag(listings_path, :method => "get", id: "search-form") do %>
             <%= text_field_tag :search, params[:search], placeholder: "Search..", :required => 'required' %>
+        
+            <%= text_field_tag :city, params[:filter], placeholder: "city" %>
+            <%= number_field_tag :min_stay, params[:filter], placeholder: "1" %>
+            <%= number_field_tag :number_of_rooms, params[:filter], placeholder: "1" %> <br>
+            <%= range_field_tag :rent, nil, {min: 100, max: 1000, :step => 10, value: params[:filter], id:"myRange" }%>
+            <p> Price: <span id="myValue"></span></p> 
             <%= submit_tag "Search", :name => nil %>
         <% end %>
         <a href="#" class="btn btn-primary btn-lg">Find your dream destination</a>
