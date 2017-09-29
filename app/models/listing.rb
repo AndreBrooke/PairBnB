@@ -1,13 +1,19 @@
 class Listing < ApplicationRecord
+	
+	include Filterable
 	attr_accessor :images
 	has_many :bookings
-	has_many :reviews
-	has_many :photos
 	belongs_to :user
 	acts_as_taggable
 	acts_as_taggable_on :interests, :rules, :locations
 	self.per_page = 10
 	mount_uploaders :images, ImagesUploader
+	scope :city, -> (city) {where("city = ?", "#{city}")}
+	scope :min_stay, -> (stay) {where("min_stay >= ?", "#{stay}")}
+	scope :number_of_rooms, -> (rooms) {where("number_of_rooms >= ?", "#{rooms}")}
+	scope :rent, -> (rent) {where("rent < ?", "#{rent}")}
+
+	
 
 	def self.search(search)
 		where("listing_name ILIKE ? OR country ILIKE ? OR city ILIKE?", "%#{search}%", "%#{search}%", "%#{search}%")

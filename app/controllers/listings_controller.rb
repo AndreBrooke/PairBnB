@@ -40,14 +40,12 @@ class ListingsController < ApplicationController
 		end
 	end
 
-	def all
-		@listing = Listing.new
-	end
-
 	def index
 		@listings = Listing.all
 		if params[:search]
-			@listings = Listing.search(params[:search]).page(params[:page]).order("created_at DESC")
+			
+			# @listings = Listing.search(params[:search]).page(params[:page]).order("created_at DESC")
+			@listings = Listing.filter(params.slice(:city, :min_stay, :number_of_rooms, :rent)).page(params[:page]).order("created_at DESC")
 		else
 			@listings = Listing.all.page(params[:page]).order('created_at DESC')
 		end
